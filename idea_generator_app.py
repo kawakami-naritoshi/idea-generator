@@ -144,7 +144,7 @@ def generate_relevance_gemini(api_key, text, query, progress_bar=None, progress_
 def generate_solution_gemini(api_key, text, query, product_type, max_retries=3, backoff_time=2):
     """Gemini APIを使用して、ソリューション案を生成する関数"""
     # モデル名を固定
-    model = "gemini-2.5-flash-preview-04-17"
+    model = "gemini-2.5-flash"
     
     # Gemini APIの設定
     genai.configure(api_key=api_key)
@@ -179,7 +179,7 @@ def generate_solution_gemini(api_key, text, query, product_type, max_retries=3, 
 def generate_image_from_solution(api_key, solution_text, query, product_type, max_retries=3, backoff_time=2):
     """Gemini APIを使用して、ソリューション案から画像を生成する関数"""
     # モデル名を固定
-    model = "gemini-2.0-flash-exp-image-generation"
+    model = "gemini-2.0-flash-preview-image-generation"
     
     # 画像生成用のGemini API設定
     # APIキーを環境変数にセット
@@ -237,7 +237,7 @@ with st.sidebar:
     gemini_api_key = st.text_input("Google Gemini API キー", type="password", help="関連度評価、ソリューション生成、画像生成に使用されます", key="gemini_api_key")
     
     # モデル設定（固定）
-    st.info("モデル設定：\n- 関連度評価: gemini-2.0-flash-lite\n- ソリューション生成: gemini-2.5-flash-preview-04-17\n- 画像生成: gemini-2.0-flash-exp-image-generation")
+    st.info("モデル設定：\n- 関連度評価: gemini-2.0-flash-lite\n- ソリューション生成: gemini-2.5-flash\n- 画像生成: gemini-2.0-flash-preview-image-generation")
     
     # ファイルアップロード
     uploaded_file = st.file_uploader("特許データベース (Excel)", type=["xlsx"], help="特許データを含むExcelファイル", key="patent_excel_file")
